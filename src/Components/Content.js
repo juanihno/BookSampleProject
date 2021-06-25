@@ -8,7 +8,7 @@ export function Content( props ) {
     <div className="container">
       <h1>Hello Content</h1>
       <Switch>
-        <Route path="/">
+        <Route exact path="/">
           <Home />
         </Route>
         <Route path="/about">
