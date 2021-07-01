@@ -6,6 +6,7 @@ export function Header(props) {
       <li className="nav-item">
         <NavLink to={item.link} className="nav-link" activeClassName="active">
           {item.name}
+          
         </NavLink>
       </li>
     )
