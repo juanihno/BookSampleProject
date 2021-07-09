@@ -12,7 +12,7 @@ const Nav = [
 function App() {
   return (
     <div className="App">
-      <Header name="Books" navigation={Nav} />
+      <Header name="Heart Books" navigation={Nav} />
       <Content />
       <Footer />
     </div>
