@@ -1,9 +1,16 @@
 <?php
-header('Access-Control-Allow-Origin: *');
+$http_origin = $_SERVER['HTTP_ORIGIN'];
 
-header('Access-Control-Allow-Methods: GET, POST');
+$allowed_domains = array(
+  'http://localhost:3000',
+  'http://localhost',
+);
 
-header("Access-Control-Allow-Headers: X-Requested-With");
+if (in_array($http_origin, $allowed_domains))
+{  
+    header("Access-Control-Allow-Origin: $http_origin");
+}
+
 require('vendor/autoload.php');
 
 use bookstore\Books;
