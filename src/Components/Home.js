@@ -20,6 +20,7 @@ export function Home ( props ) {
     )
   }
   else {
+    console.log( data )
     const Books = data.map( (item) => {
       return(
         <h3>{item.book_title}</h3>
