@@ -4,7 +4,7 @@ export function Home ( props ) {
   const dataURL = "http://johannes.oa4.info/php/book.php";
 
   useEffect( () => {
-    if( data.length === 0 ) {
+    if( !data ) {
       fetch( dataURL )
       .then( ( response ) => { response.json() })
       .then( ( jsonData ) => { setData(jsonData) } )
@@ -12,7 +12,7 @@ export function Home ( props ) {
     }
   })
 
-  if( data.length === 0 ) {
+  if( !data ) {
     return(
       <div className="home">
         <h2>Getting data ...</h2>
