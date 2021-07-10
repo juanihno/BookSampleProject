@@ -4,13 +4,18 @@ export function Home ( props ) {
   const dataURL = "http://johannes.oa4.info/php/book.php";
 
   useEffect( () => {
-    console.log('fetching?')
     if( !data ) {
-      console.log('fetching?')
-      fetch( dataURL )
+      fetch( dataURL, {
+        method: "GET",
+        body: JSON.stringify(data),
+        headers: {
+          "Accept": "application/json"
+        }
+      }) 
       .then( ( response ) => { 
         console.log( response )
-        response.json() 
+        console.log( response.headers.get('Content-Type') )
+        response.json()
       })
       .then( ( jsonData ) => { 
         //setData(jsonData) 
