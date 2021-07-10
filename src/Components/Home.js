@@ -9,7 +9,7 @@ export function Home ( props ) {
       .then( ( response ) => { response.json() })
       .then( ( jsonData ) => { 
         setData(jsonData) 
-        console.log( data )
+        console.log( jsonData )
       } )
       .catch( (error) => { console.log(error) })
     }
