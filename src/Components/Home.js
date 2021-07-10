@@ -7,7 +7,10 @@ export function Home ( props ) {
     if( !data ) {
       fetch( dataURL )
       .then( ( response ) => { response.json() })
-      .then( ( jsonData ) => { setData(jsonData) } )
+      .then( ( jsonData ) => { 
+        setData(jsonData) 
+        console.log( data )
+      } )
       .catch( (error) => { console.log(error) })
     }
   })
