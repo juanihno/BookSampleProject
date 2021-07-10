@@ -19,6 +19,9 @@ class Database {
       $this -> password,
       $this -> databasename
     );
+    if( !$this -> connection ) {
+      echo "database error";
+    }
   }
 
   protected function getConnection() {

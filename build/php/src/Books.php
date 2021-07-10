@@ -10,6 +10,10 @@ class Books extends Database {
   }
 
   public function getBooks() {
+    if( !$this -> connection ) {
+      echo "error";
+      exit();
+    }
     $query = "SELECT * FROM book";
     $statement = $this -> connection -> prepare($query);
     if( $statement -> execute() == false ) {
