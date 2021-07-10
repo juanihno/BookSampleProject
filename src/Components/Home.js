@@ -1,29 +1,35 @@
 import { useState, useEffect } from "react";
+import axios  from "axios";
+import { response } from "express";
 export function Home ( props ) {
   const [ data, setData ] = useState()
   const dataURL = "http://johannes.oa4.info/php/book.php";
 
   useEffect( () => {
     if( !data ) {
-      fetch( dataURL, {
-        method: "GET",
-        body: JSON.stringify(data),
-        headers: {
-          "Accept": "application/json"
+      // fetch( dataURL
+      //   // {
+      //   // method: "GET",
+      //   // headers: {
+      //   //   "Accept": "application/json"
+      //   // }
+      // // }
+      // ) 
+      // .then( ( response ) => { 
+      //   response.json()
+      // })
+      // .then( ( jsonData ) => { 
+      //   setData(jsonData) 
+      //   console.log( jsonData )
+      // } )
+      // .catch( (error) => { 
+      //   console.log(error) 
+      // })
+      axios.get(dataURL).then(
+        (response) => {
+          setData( response.data )
         }
-      }) 
-      .then( ( response ) => { 
-        console.log( response )
-        console.log( response.headers.get('Content-Type') )
-        response.json()
-      })
-      .then( ( jsonData ) => { 
-        //setData(jsonData) 
-        console.log( jsonData )
-      } )
-      .catch( (error) => { 
-        console.log(error) 
-      })
+      )
     }
     else {
       console.log('not fetching')
@@ -38,7 +44,7 @@ export function Home ( props ) {
     )
   }
   else {
-    const Books = data.map( (item) => {
+    const Books = data.books.map( (item) => {
       return(
         <h3>{item.book_title}</h3>
       )
