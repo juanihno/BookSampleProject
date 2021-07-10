@@ -13,5 +13,11 @@ require('vendor/autoload.php');
 
 $conn = mysqli_connect("localhost", "website", "password", "heartbooks");
 print_r( $conn );
+if( $conn ) {
+  echo "success";
+}
+else {
+  echo "failed";
+}
 
 ?>
