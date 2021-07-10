@@ -1,6 +1,5 @@
 <?php
-header("Access-Control-Allow-Origin: *");
-header('Content-Type: application/json');
+
 
 $http_origin = $_SERVER['HTTP_ORIGIN'];
 
@@ -22,6 +21,9 @@ use bookstore\Books;
 $books = new Books();
 
 $books_results = $books -> getBooks();
+
+header("Access-Control-Allow-Origin: *");
+header('Content-Type: application/json');
 
 echo json_encode( $books_results );
 
