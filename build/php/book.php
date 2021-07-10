@@ -1,4 +1,7 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+header('Content-Type: application/json');
+
 $http_origin = $_SERVER['HTTP_ORIGIN'];
 
 $allowed_domains = array(
@@ -8,7 +11,8 @@ $allowed_domains = array(
 
 if (in_array($http_origin, $allowed_domains))
 {  
-    header("Access-Control-Allow-Origin: $http_origin");
+    // header("Access-Control-Allow-Origin: $http_origin");
+    // header('Content-Type: application/json');
 }
 
 require('vendor/autoload.php');

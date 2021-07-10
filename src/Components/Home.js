@@ -1,19 +1,27 @@
 import { useState, useEffect } from "react";
 export function Home ( props ) {
-  const [ data, setData ] = useState([])
+  const [ data, setData ] = useState()
   const dataURL = "http://johannes.oa4.info/php/book.php";
 
   useEffect( () => {
-    
-    if( data === undefined ) {
+    console.log('fetching?')
+    if( !data ) {
       console.log('fetching?')
       fetch( dataURL )
-      .then( ( response ) => { response.json() })
+      .then( ( response ) => { 
+        console.log( response )
+        response.json() 
+      })
       .then( ( jsonData ) => { 
-        setData(jsonData) 
+        //setData(jsonData) 
         console.log( jsonData )
       } )
-      .catch( (error) => { console.log(error) })
+      .catch( (error) => { 
+        console.log(error) 
+      })
+    }
+    else {
+      console.log('not fetching')
     }
   })
 
