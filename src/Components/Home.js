@@ -1,38 +1,16 @@
 import { useState, useEffect } from "react";
 import axios  from "axios";
-import { response } from "express";
 export function Home ( props ) {
   const [ data, setData ] = useState()
   const dataURL = "http://johannes.oa4.info/php/book.php";
 
   useEffect( () => {
     if( !data ) {
-      // fetch( dataURL
-      //   // {
-      //   // method: "GET",
-      //   // headers: {
-      //   //   "Accept": "application/json"
-      //   // }
-      // // }
-      // ) 
-      // .then( ( response ) => { 
-      //   response.json()
-      // })
-      // .then( ( jsonData ) => { 
-      //   setData(jsonData) 
-      //   console.log( jsonData )
-      // } )
-      // .catch( (error) => { 
-      //   console.log(error) 
-      // })
       axios.get(dataURL).then(
         (response) => {
           setData( response.data )
         }
       )
-    }
-    else {
-      console.log('not fetching')
     }
   })
 
