@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 export function Home ( props ) {
   const [ data, setData ] = useState([])
-  const dataURL = "http://localhost:8080/sample-project/build/php/book.php";
+  const dataURL = "http://johannes.oa4.info/php/book.php";
 
   useEffect( () => {
     if( data.length === 0 ) {
