@@ -4,7 +4,9 @@ export function Home ( props ) {
   const dataURL = "http://johannes.oa4.info/php/book.php";
 
   useEffect( () => {
-    if( !data ) {
+    
+    if( data === undefined ) {
+      console.log('fetching?')
       fetch( dataURL )
       .then( ( response ) => { response.json() })
       .then( ( jsonData ) => { 
@@ -23,7 +25,6 @@ export function Home ( props ) {
     )
   }
   else {
-    console.log( data )
     const Books = data.map( (item) => {
       return(
         <h3>{item.book_title}</h3>
