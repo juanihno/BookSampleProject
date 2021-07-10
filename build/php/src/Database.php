@@ -12,7 +12,7 @@ class Database {
     $this -> host = "localhost";
     $this -> username = "website";
     $this -> password = "password";
-    $this -> databasename = "Heartbooks";
+    $this -> databasename = "heartbooks";
     $this -> connection = mysqli_connect(
       $this -> host,
       $this -> username,
