@@ -11,6 +11,8 @@ import {About} from './About';
 import {Register} from './Register';
 import {Login} from './Login';
 import {Logout} from './Logout';
+import { AddData } from './Admin/AddData';
+
 
 export function Content( props ) {
   const [auth,setAuth] = useState( false )
