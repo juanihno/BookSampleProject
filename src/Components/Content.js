@@ -13,13 +13,22 @@ import {Login} from './Login';
 import {Logout} from './Logout';
 import { AddData } from './Admin/AddData';
 
-
 export function Content( props ) {
   const [auth,setAuth] = useState( false )
   const [user,setUser] = useState()
 
   if(!firebase.apps.length){
     firebase.initializeApp( firebaseConfig);
+  }
+
+  const db = firebase.firestore()
+
+  const addData = ( data ) => {
+    return new Promise( ( resolve,reject) => {
+      db.collection('books').add( data )
+      .then( () => resolve( true ) )
+      .catch( (error) => reject(error) )
+    })
   }
 
   const registerUser = (email,password) => {
@@ -77,6 +86,9 @@ export function Content( props ) {
         </Route>
         <Route path="/logout">
           <Logout handler={ logoutUser }/>
+        </Route>
+        <Route path="/add">
+          <AddData handler={addData}/>
         </Route>
       </Switch>
     </div>
