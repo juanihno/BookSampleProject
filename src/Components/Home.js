@@ -1,22 +1,13 @@
 import { useState, useEffect } from "react";
-//import axios  from "axios";
+import { Link } from "react-router-dom";
+
 export function Home ( props ) {
   const [ data, setData ] = useState()
-  const dataURL = "http://johannes.oa4.info/php/book.php";
-
+ 
   useEffect( () => {
-    if( !data ) {
-      // axios.get(dataURL).then(
-      //   (response) => {
-      //     setData( response.data )
-      //   }
-      // )
-      fetch( dataURL )
-      .then((response) => response.json())
-      .then((responseData) => setData(responseData) )
-      .catch((error) => console.log(error))
-    }
-  })
+    setData( props.data )
+  }, [props.data] )
+  
 
   if( !data ) {
     return(
@@ -26,15 +17,35 @@ export function Home ( props ) {
     )
   }
   else {
-    const Books = data.books.map( (item) => {
+    const Books = data.map( (item, key) => {
       return(
-        <h3>{item.book_title}</h3>
+        <div className="col-md-3 my-2" key={key}>
+          <div className="card position-relative">
+            <Link 
+            className="position-absolute" 
+            to={"book/" + item.id } 
+            style={{top:0,bottom:0,left:0,right:0}}/>
+            <img 
+            src={item.cover_image} 
+            className="card-img-top border border-primary" 
+            alt={item.title} 
+            style={{width: '100%', height: '300px', objectFit: 'cover', objectPosition: 'center'}}
+            />
+            <div className="card-body">
+              <h5 className="card-title">{item.title}</h5>
+              <p style={{minHeight: '5ch'}}>{item.tagline}</p>
+              <p>by {item.author}</p>
+            </div>
+          </div>
+        </div>
       )
     })
     return(
       <div className="home">
         <h2>Books</h2>
+        <div className="row">
         { Books }
+        </div>
       </div>
     )
   }
